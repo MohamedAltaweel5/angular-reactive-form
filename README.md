@@ -29,3 +29,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## NOTE
 
 Please concern putting double quotes in JSON while writing it
+
+## JSON Example
+[{"controlType": "textbox","key": "name","label": "Name","required": true,"order": 1},{"controlType": "dropdown","key": "country","label": "Country","options": [{"key": "usa",  "value": "United States of America"},{"key": "be",  "value": "Brazil"},{"key": "other", "value": "Other"}],"order": "3"},{"controlType": "checkbox","key": "agree","label": "I accept terms and services","type": "checkbox","required": "true","order": "4"},{"controlType": "radio","key": "sex","label": "Sex","type": "radio","options": [{ "key": "male", "value": "Male" },{ "key": "female", "value":"Female" }],"order": "5"},{"controlType": "textarea","key": "message","label": "Mesage","type": "textarea","order": "6"},{"controlType": "button","key": "cancel","label": "cancel","type": "button"},{"controlType": "button","key": "cancel","label": "save","type": "button"}]
