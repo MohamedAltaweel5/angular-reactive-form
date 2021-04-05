@@ -5,8 +5,8 @@
                <app-dynamic-form-input [input]="formField" [form]="form"></app-dynamic-form-input>
           </div>
 
-          <div class="form-group">
-               <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Save</button>
+          <div class="form-group" *ngFor="let button of formButtons">
+               <button type="submit" class="btn btn-primary" [disabled]="form.invalid">{{button.label}}</button>
           </div>
      </form>
 </div>

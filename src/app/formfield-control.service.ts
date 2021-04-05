@@ -36,7 +36,6 @@ export class FormfieldControlService {
         data.map((entry) => {
           return new FormField<string>(entry);
         })
-
       return of(inputs.sort((a, b) => a.order - b.order));
     }
   }

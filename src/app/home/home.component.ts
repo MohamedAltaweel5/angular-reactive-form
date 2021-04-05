@@ -9,18 +9,28 @@ import { FormfieldControlService } from '../formfield-control.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  jsonInput: string;
+  jsonInput: string = '';
   formFields: Observable<FormField<any>[]>;
+  errorMsg: string = '';
   constructor(private service: FormfieldControlService) { }
 
   reloadForm() {
-    // console.log("dfgvdv", this.jsonInput);
-    // var obj = JSON.parse(this.jsonInput);
-    // var pretty = JSON.stringify(this.jsonInput, undefined, 4);
-    // console.log("sljdfnskjdns", JSON.parse(this.jsonInput));
 
-    // this.formFields = this.service.getFormFields(JSON.parse(this.cleanString(this.jsonInput)));
-    console.log("this.cleanString(this.jsonInput");
+    if (this.isValidJson(this.jsonInput)) {
+      this.formFields = this.service.getFormFields(JSON.parse(this.jsonInput));
+      this.errorMsg = ''
+    }
+    else {
+      this.errorMsg = "Please enter valid JSON";
+    }
+  }
 
+  isValidJson(str) {
+    try {
+      JSON.parse(str);
+    } catch (e) {
+      return false;
+    }
+    return true;
   }
 }

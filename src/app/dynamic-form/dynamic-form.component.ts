@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormField } from '../form-fields';
 import { FormfieldControlService } from '../formfield-control.service';
@@ -8,19 +8,23 @@ import { FormfieldControlService } from '../formfield-control.service';
   templateUrl: './dynamic-form.component.html',
   styleUrls: ['./dynamic-form.component.css']
 })
-export class DynamicFormComponent implements OnInit {
+export class DynamicFormComponent implements OnChanges {
 
   @Input() formFields: FormField<string>[] = [];
+  formButtons: FormField<string>[] = [];
   form: FormGroup;
 
   constructor(private formfieldService: FormfieldControlService) { }
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
+    this.formButtons = this.formFields.filter(field => {
+      if (field.type == "button")
+        return field;
+    });
     this.form = this.formfieldService.toFormGroup(this.formFields);
   }
 
   onSubmit() {
-    console.log("dsjndskjfnynpm install bootstrap");
-
+    console.log("Submit clicked");
   }
 }
